@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,7 +24,13 @@ public class Artist {
     @Column(name = "image_url")
     private String imageUrl;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "country_id", referencedColumnName = "id")
     private Country country;
+
+    @OneToMany(mappedBy = "artist")
+    private List<ArtistContactInfo> contactInfos;
+
+    @OneToMany(mappedBy = "artist")
+    private List<ArtistSocialMedia> socialsMedia;
 }

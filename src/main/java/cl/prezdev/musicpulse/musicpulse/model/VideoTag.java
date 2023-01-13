@@ -13,11 +13,11 @@ public class VideoTag {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "video_id", referencedColumnName = "id")
     private Video video;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "tag_id", referencedColumnName = "id")
     private Tag tag;
 }

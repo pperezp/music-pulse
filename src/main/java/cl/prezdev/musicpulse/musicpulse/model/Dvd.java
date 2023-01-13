@@ -23,7 +23,7 @@ public class Dvd {
     @Column(name = "year")
     private int year;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "artist_id", referencedColumnName = "id")
     private Artist artist;
 }

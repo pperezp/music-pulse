@@ -14,11 +14,11 @@ public class DiscStreaming {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "disc_id", referencedColumnName = "id")
     private Disc disc;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "social_media_id", referencedColumnName = "id")
     private SocialMedia socialMedia;
 

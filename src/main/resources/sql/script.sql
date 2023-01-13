@@ -2,6 +2,8 @@ CREATE DATABASE music_pulse_db;
 
 USE music_pulse_db;
 
+-- SET SESSION group_concat_max_len=4294967295;
+
 CREATE TABLE country
 (
     id   INT AUTO_INCREMENT PRIMARY KEY,
