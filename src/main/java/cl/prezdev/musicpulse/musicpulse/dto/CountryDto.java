@@ -5,8 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class SocialMediaDto {
+public class CountryDto {
     private Long id;
     private String name;
-    private String iconUrl;
 }

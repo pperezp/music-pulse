@@ -10,7 +10,8 @@ import java.util.List;
 public class ArtistDto {
     private Long id;
     private String name;
-    private List<String> emails;
-    private String image;
-    private List<SocialMediaDto> socialMedia;
+    private String imageUrl;
+    private CountryDto country;
+    private List<ArtistContactInfoDto> contactsInfo;
+    private List<ArtistSocialMediaDto> socialsMedia;
 }

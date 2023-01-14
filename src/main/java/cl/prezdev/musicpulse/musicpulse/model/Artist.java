@@ -29,7 +29,7 @@ public class Artist {
     private Country country;
 
     @OneToMany(mappedBy = "artist")
-    private List<ArtistContactInfo> contactInfos;
+    private List<ArtistContactInfo> contactsInfo;
 
     @OneToMany(mappedBy = "artist")
     private List<ArtistSocialMedia> socialsMedia;

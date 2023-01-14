@@ -9,5 +9,5 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class ArtistResponse {
-    private ArtistDto artistDto;
+    private ArtistDto artist;
 }

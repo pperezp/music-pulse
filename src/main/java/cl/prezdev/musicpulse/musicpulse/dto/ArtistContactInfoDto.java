@@ -5,8 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class SocialMediaDto {
+public class ArtistContactInfoDto {
     private Long id;
-    private String name;
-    private String iconUrl;
+    private String email;
 }
