@@ -15,7 +15,7 @@ import java.util.Optional;
 
 @RestController
 @AllArgsConstructor
-public class ArtistController implements ArtistControllerPort {
+public class ArtistControllerAdapter implements ArtistControllerPort {
 
     private final ArtistService artistService;
 

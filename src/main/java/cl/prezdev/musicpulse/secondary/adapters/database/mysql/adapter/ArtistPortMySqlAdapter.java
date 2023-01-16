@@ -18,6 +18,7 @@ import java.util.Optional;
 @Component
 @AllArgsConstructor
 public class ArtistPortMySqlAdapter implements ArtistPort {
+
     private final ModelMapper modelMapper;
     private final ArtistRepository artistRepository;
 
