@@ -3,7 +3,7 @@ package cl.prezdev.musicpulse.musicpulse.domain.service.impl;
 import cl.prezdev.musicpulse.musicpulse.domain.dto.Pagination;
 import cl.prezdev.musicpulse.musicpulse.domain.dto.ArtistDto;
 import cl.prezdev.musicpulse.musicpulse.domain.service.ArtistService;
-import cl.prezdev.musicpulse.musicpulse.ports.secondary.database.ArtistPort;
+import cl.prezdev.musicpulse.musicpulse.secondary.ports.database.ArtistPort;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
