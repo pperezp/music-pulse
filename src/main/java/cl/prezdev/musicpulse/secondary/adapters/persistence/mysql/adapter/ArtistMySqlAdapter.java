@@ -1,5 +1,6 @@
 package cl.prezdev.musicpulse.secondary.adapters.persistence.mysql.adapter;
 
+import cl.prezdev.musicpulse.domain.dto.pages.PageDto;
 import cl.prezdev.musicpulse.secondary.adapters.persistence.mysql.model.Artist;
 import cl.prezdev.musicpulse.secondary.adapters.persistence.mysql.repository.ArtistRepository;
 import cl.prezdev.musicpulse.domain.dto.ArtistDto;
@@ -38,13 +39,16 @@ public class ArtistMySqlAdapter implements ArtistPersistencePort {
     }
 
     @Override
-    public Page<ArtistDto> getAllArtist(Pagination pagination) {
+    public PageDto<ArtistDto> getAllArtist(Pagination pagination) {
         Sort sort = getSort(pagination);
         Pageable pageable = PageRequest.of(pagination.getPage(), pagination.getSize(), sort);
 
         Page<Artist> artistPages = artistRepository.findAll(pageable);
+        Page<ArtistDto> page = artistPages.map(artist -> modelMapper.map(artist, ArtistDto.class));
 
-        return artistPages.map(artist -> modelMapper.map(artist, ArtistDto.class));
+        PageDto<ArtistDto> pageDto = new PageDto<>();
+        modelMapper.map(page, pageDto);
+        return pageDto;
     }
 
     private Sort getSort(Pagination pagination) {

@@ -1,11 +1,11 @@
 package cl.prezdev.musicpulse.primary;
 
 import cl.prezdev.musicpulse.domain.dto.Pagination;
+import cl.prezdev.musicpulse.domain.dto.pages.PageDto;
 import cl.prezdev.musicpulse.domain.dto.response.ArtistResponse;
 import cl.prezdev.musicpulse.domain.dto.ArtistDto;
 import cl.prezdev.musicpulse.primary.ports.ArtistPrimaryPort;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +23,7 @@ public class RestArtistController {
 
     // curl -v 'http://localhost:8080/api/v1/artists?page=0&size=10&orderBy=name&asc=true' | python -m json.tool
     @GetMapping("/api/v1/artists")
-    public ResponseEntity<Page<ArtistDto>> getAllArtist(Pagination pagination) {
+    public ResponseEntity<PageDto<ArtistDto>> getAllArtist(Pagination pagination) {
         return ResponseEntity.ok(artistPrimaryPort.getAllArtist(pagination));
     }
 }
