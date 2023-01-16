@@ -1,4 +1,4 @@
-package cl.prezdev.musicpulse.musicpulse.config.ports.secondary;
+package cl.prezdev.musicpulse.musicpulse.config.secondary.port;
 
 import cl.prezdev.musicpulse.musicpulse.secondary.ports.database.ArtistPort;
 import lombok.AllArgsConstructor;
