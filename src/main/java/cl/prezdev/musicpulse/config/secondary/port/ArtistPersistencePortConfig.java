@@ -1,6 +1,6 @@
 package cl.prezdev.musicpulse.config.secondary.port;
 
-import cl.prezdev.musicpulse.secondary.ports.ArtistPersistencePort;
+import cl.prezdev.musicpulse.domain.ports.secondary.ArtistPersistencePort;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
