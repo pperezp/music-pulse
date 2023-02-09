@@ -14,6 +14,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -49,6 +51,24 @@ public class ArtistMySqlAdapter implements ArtistPersistencePort {
         PageDto<ArtistDto> pageDto = new PageDto<>();
         modelMapper.map(page, pageDto);
         return pageDto;
+    }
+
+    @Override
+    public List<ArtistDto> search(String q) {
+        List<ArtistDto> artistDtoList = new ArrayList<>();
+        List<Artist> artists = artistRepository.findAllByNameContains(q);
+
+        for (Artist artist : artists) {
+            ArtistDto artistDto = modelMapper.map(artist, ArtistDto.class);
+
+            artistDto.setCountry(null);
+            artistDto.setSocialsMedia(null);
+            artistDto.setContactsInfo(null);
+
+            artistDtoList.add(artistDto);
+        }
+
+        return artistDtoList;
     }
 
     private Sort getSort(Pagination pagination) {

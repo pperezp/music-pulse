@@ -30,16 +30,6 @@ public class ArtistServiceImpl implements ArtistService {
 
     @Override
     public List<ArtistDto> search(String q) {
-        List<ArtistDto> artists = new ArrayList<>();
-
-        ArtistDto artistDto = new ArtistDto();
-
-        artistDto.setId(1L);
-        artistDto.setName(q);
-        artistDto.setImageUrl("http://image.com");
-
-        artists.add(artistDto);
-
-        return artists;
+        return artistPersistencePort.search(q);
     }
 }
