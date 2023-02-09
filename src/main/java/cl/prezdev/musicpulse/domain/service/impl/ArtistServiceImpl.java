@@ -8,6 +8,8 @@ import cl.prezdev.musicpulse.domain.ports.secondary.ArtistPersistencePort;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -24,5 +26,20 @@ public class ArtistServiceImpl implements ArtistService {
     @Override
     public PageDto<ArtistDto> getAllArtist(Pagination pagination) {
         return artistPersistencePort.getAllArtist(pagination);
+    }
+
+    @Override
+    public List<ArtistDto> search(String q) {
+        List<ArtistDto> artists = new ArrayList<>();
+
+        ArtistDto artistDto = new ArtistDto();
+
+        artistDto.setId(1L);
+        artistDto.setName(q);
+        artistDto.setImageUrl("http://image.com");
+
+        artists.add(artistDto);
+
+        return artists;
     }
 }

@@ -41,16 +41,7 @@ public class RestArtistController {
     // curl -v http://localhost:8080/api/v1/artists/search?q=koke
     @GetMapping("/api/v1/artists/search")
     public ResponseEntity<ArtistSearchResponse> search(@RequestParam("q") String q) {
-        List<ArtistDto> artists = new ArrayList<>();
-
-        ArtistDto artistDto = new ArtistDto();
-
-        artistDto.setId(1L);
-        artistDto.setName(q);
-        artistDto.setImageUrl("http://image.com");
-
-        artists.add(artistDto);
-
+        List<ArtistDto> artists = artistService.search(q);
         return ResponseEntity.ok(new ArtistSearchResponse(artists));
     }
 }
