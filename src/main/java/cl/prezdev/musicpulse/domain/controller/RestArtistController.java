@@ -4,12 +4,15 @@ import cl.prezdev.musicpulse.domain.dto.Pagination;
 import cl.prezdev.musicpulse.domain.dto.pages.PageDto;
 import cl.prezdev.musicpulse.domain.dto.response.ArtistResponse;
 import cl.prezdev.musicpulse.domain.dto.ArtistDto;
+import cl.prezdev.musicpulse.domain.dto.response.ArtistSearchResponse;
 import cl.prezdev.musicpulse.domain.exceptions.ArtistNotFoundException;
 import cl.prezdev.musicpulse.domain.service.ArtistService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -33,5 +36,21 @@ public class RestArtistController {
     @GetMapping("/api/v1/artists")
     public ResponseEntity<PageDto<ArtistDto>> getAllArtist(Pagination pagination) {
         return ResponseEntity.ok(artistService.getAllArtist(pagination));
+    }
+
+    // curl -v http://localhost:8080/api/v1/artists/search?q=koke
+    @GetMapping("/api/v1/artists/search")
+    public ResponseEntity<ArtistSearchResponse> search(@RequestParam("q") String q) {
+        List<ArtistDto> artists = new ArrayList<>();
+
+        ArtistDto artistDto = new ArtistDto();
+
+        artistDto.setId(1L);
+        artistDto.setName(q);
+        artistDto.setImageUrl("http://image.com");
+
+        artists.add(artistDto);
+
+        return ResponseEntity.ok(new ArtistSearchResponse(artists));
     }
 }
