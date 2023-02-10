@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Getter
 @Setter
@@ -26,4 +27,7 @@ public class Disc {
     @ManyToOne
     @JoinColumn(name = "artist_id", referencedColumnName = "id")
     private Artist artist;
+
+    @OneToMany(mappedBy = "disc")
+    private List<DiscStreaming> streaming;
 }

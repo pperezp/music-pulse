@@ -5,7 +5,7 @@ import cl.prezdev.musicpulse.adapters.secondary.persistence.mysql.repository.Vid
 import cl.prezdev.musicpulse.domain.dto.Pagination;
 import cl.prezdev.musicpulse.domain.dto.VideoDto;
 import cl.prezdev.musicpulse.domain.dto.pages.PageDto;
-import cl.prezdev.musicpulse.domain.ports.secondary.VideosPersistencePort;
+import cl.prezdev.musicpulse.domain.ports.secondary.VideoPersistencePort;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @AllArgsConstructor
-public class VideosMySqlAdapter implements VideosPersistencePort {
+public class VideoMySqlAdapter implements VideoPersistencePort {
 
     private final VideoRepository videoRepository;
     private final ModelMapper modelMapper;

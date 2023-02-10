@@ -7,8 +7,9 @@ import java.util.List;
 
 @Getter
 @Setter
-public class VideoDto {
+public class DiscDto {
     private long id;
-    private String url;
-    private List<TagDto> tags;
+    private String name;
+    private int year;
+    private List<DiscStreamingDto> streaming;
 }

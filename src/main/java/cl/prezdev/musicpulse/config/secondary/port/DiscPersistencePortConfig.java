@@ -1,6 +1,6 @@
 package cl.prezdev.musicpulse.config.secondary.port;
 
-import cl.prezdev.musicpulse.domain.ports.secondary.VideoPersistencePort;
+import cl.prezdev.musicpulse.domain.ports.secondary.DiscPersistencePort;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,12 +8,12 @@ import org.springframework.context.annotation.Primary;
 
 @Configuration
 @AllArgsConstructor
-public class VideosPersistencePortConfig {
+public class DiscPersistencePortConfig {
 
-    private final VideoPersistencePort videosMySqlAdapter;
+    private final DiscPersistencePort discMySqlAdapter;
 
     @Primary @Bean
-    public VideoPersistencePort getVideosPersistencePort() {
-        return videosMySqlAdapter;
+    public DiscPersistencePort getDiscPersistencePort() {
+        return discMySqlAdapter;
     }
 }

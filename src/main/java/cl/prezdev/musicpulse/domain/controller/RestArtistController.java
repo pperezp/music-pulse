@@ -1,5 +1,6 @@
 package cl.prezdev.musicpulse.domain.controller;
 
+import cl.prezdev.musicpulse.domain.dto.DiscDto;
 import cl.prezdev.musicpulse.domain.dto.Pagination;
 import cl.prezdev.musicpulse.domain.dto.VideoDto;
 import cl.prezdev.musicpulse.domain.dto.pages.PageDto;
@@ -8,6 +9,7 @@ import cl.prezdev.musicpulse.domain.dto.ArtistDto;
 import cl.prezdev.musicpulse.domain.dto.response.ArtistSearchResponse;
 import cl.prezdev.musicpulse.domain.exceptions.ArtistNotFoundException;
 import cl.prezdev.musicpulse.domain.service.ArtistService;
+import cl.prezdev.musicpulse.domain.service.DiscService;
 import cl.prezdev.musicpulse.domain.service.VideoService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,7 @@ public class RestArtistController {
 
     private final ArtistService artistService;
     private final VideoService videoService;
+    private final DiscService discService;
 
     // curl -v http://localhost:8080/api/v1/artists/1 | python -m json.tool
     @GetMapping("/api/v1/artists/{id}")
@@ -55,5 +58,15 @@ public class RestArtistController {
     ) {
         PageDto<VideoDto> videos = videoService.getVideos(id, pagination);
         return ResponseEntity.ok(videos);
+    }
+
+    // curl -v http://localhost:8080/api/v1/artists/1/discography?page=0&size=15
+    @GetMapping("/api/v1/artists/{id}/discography")
+    public ResponseEntity<PageDto<DiscDto>> getDiscography(
+            @PathVariable long id,
+            Pagination pagination
+    ) {
+        PageDto<DiscDto> discography = discService.getDiscography(id, pagination);
+        return ResponseEntity.ok(discography);
     }
 }
