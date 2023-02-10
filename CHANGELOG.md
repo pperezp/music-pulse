@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/pperezp/music-pulse/compare/v1.1.0...v1.2.0) (2023-02-10)
+
+
+### Features
+
+* add GET /api/v1/artists/{id}/discography endpoint ([44ee87a](https://github.com/pperezp/music-pulse/commits/44ee87a21d6105eb39286a7a5959db6ed7354e42))
+* add GET /api/v1/artists/{id}/videos endpoint ([3337d80](https://github.com/pperezp/music-pulse/commits/3337d804e5f0521a1c99ebf59f38cd945299839e))
+* implement search artist in ArtistService (+unit test) ([8f7e256](https://github.com/pperezp/music-pulse/commits/8f7e25677f27595c68dbadd550eec5a6fea208bf))
+* implement search by name in ArtistRepository (+ unit test) ([caebd84](https://github.com/pperezp/music-pulse/commits/caebd84b12b22ec04fa2a21f3a22694c21c14396))
+
+
+### Bug Fixes
+
+* fix GET /artists endpoint (Artist Lite Dto) ([93bfc6d](https://github.com/pperezp/music-pulse/commits/93bfc6d87d47fdcfe62ab39234e5a21eb4ea4f7c))
+
+
+### Test
+
+* add search artist endpoint test ([234d348](https://github.com/pperezp/music-pulse/commits/234d34891d988c3baebcc3d493352313d54c755e))
+
 ## 1.1.0 (2023-02-09)
 
 
