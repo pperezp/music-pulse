@@ -1,5 +1,6 @@
 package cl.prezdev.musicpulse.domain.service.impl;
 
+import cl.prezdev.musicpulse.domain.dto.ArtistLiteDto;
 import cl.prezdev.musicpulse.domain.dto.Pagination;
 import cl.prezdev.musicpulse.domain.dto.ArtistDto;
 import cl.prezdev.musicpulse.domain.dto.pages.PageDto;
@@ -23,12 +24,12 @@ public class ArtistServiceImpl implements ArtistService {
     }
 
     @Override
-    public PageDto<ArtistDto> getAllArtist(Pagination pagination) {
+    public PageDto<ArtistLiteDto> getAllArtist(Pagination pagination) {
         return artistPersistencePort.getAllArtist(pagination);
     }
 
     @Override
-    public List<ArtistDto> search(String q) {
+    public List<ArtistLiteDto> search(String q) {
         return artistPersistencePort.search(q);
     }
 }

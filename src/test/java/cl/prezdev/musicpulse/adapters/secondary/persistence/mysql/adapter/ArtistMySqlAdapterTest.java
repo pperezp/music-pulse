@@ -3,6 +3,7 @@ package cl.prezdev.musicpulse.adapters.secondary.persistence.mysql.adapter;
 import cl.prezdev.musicpulse.adapters.secondary.persistence.mysql.model.Artist;
 import cl.prezdev.musicpulse.adapters.secondary.persistence.mysql.repository.ArtistRepository;
 import cl.prezdev.musicpulse.domain.dto.ArtistDto;
+import cl.prezdev.musicpulse.domain.dto.ArtistLiteDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -54,18 +55,15 @@ class ArtistMySqlAdapterTest {
 
     @Test
     void test(){
-        List<ArtistDto> artists = artistMySqlAdapter.search("name");
+        List<ArtistLiteDto> artists = artistMySqlAdapter.search("name");
 
         assertNotNull(artists);
         assertFalse(artists.isEmpty());
 
-        ArtistDto artistDto = artists.get(0);
+        ArtistLiteDto artistDto = artists.get(0);
 
         assertNotNull(artistDto.getId());
         assertNotNull(artistDto.getName());
         assertNotNull(artistDto.getImageUrl());
-        assertNull(artistDto.getCountry());
-        assertNull(artistDto.getContactsInfo());
-        assertNull(artistDto.getSocialsMedia());
     }
 }

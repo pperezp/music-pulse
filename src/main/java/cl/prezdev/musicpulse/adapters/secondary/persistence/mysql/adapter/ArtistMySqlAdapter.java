@@ -2,6 +2,7 @@ package cl.prezdev.musicpulse.adapters.secondary.persistence.mysql.adapter;
 
 import cl.prezdev.musicpulse.adapters.secondary.persistence.mysql.model.Artist;
 import cl.prezdev.musicpulse.adapters.secondary.persistence.mysql.repository.ArtistRepository;
+import cl.prezdev.musicpulse.domain.dto.ArtistLiteDto;
 import cl.prezdev.musicpulse.domain.dto.pages.PageDto;
 import cl.prezdev.musicpulse.domain.dto.ArtistDto;
 import cl.prezdev.musicpulse.domain.dto.Pagination;
@@ -39,30 +40,25 @@ public class ArtistMySqlAdapter implements ArtistPersistencePort {
     }
 
     @Override
-    public PageDto<ArtistDto> getAllArtist(Pagination pagination) {
+    public PageDto<ArtistLiteDto> getAllArtist(Pagination pagination) {
         Pageable pageable = pagination.toPageable();
 
         Page<Artist> artistPages = artistRepository.findAll(pageable);
-        Page<ArtistDto> page = artistPages.map(artist -> modelMapper.map(artist, ArtistDto.class));
+        Page<ArtistLiteDto> page = artistPages.map(artist -> modelMapper.map(artist, ArtistLiteDto.class));
 
-        PageDto<ArtistDto> pageDto = new PageDto<>();
+        PageDto<ArtistLiteDto> pageDto = new PageDto<>();
         modelMapper.map(page, pageDto);
 
         return pageDto;
     }
 
     @Override
-    public List<ArtistDto> search(String q) {
-        List<ArtistDto> artistDtoList = new ArrayList<>();
+    public List<ArtistLiteDto> search(String q) {
+        List<ArtistLiteDto> artistDtoList = new ArrayList<>();
         List<Artist> artists = artistRepository.findAllByNameContains(q);
 
         for (Artist artist : artists) {
-            ArtistDto artistDto = modelMapper.map(artist, ArtistDto.class);
-
-            artistDto.setCountry(null);
-            artistDto.setSocialsMedia(null);
-            artistDto.setContactsInfo(null);
-
+            ArtistLiteDto artistDto = modelMapper.map(artist, ArtistLiteDto.class);
             artistDtoList.add(artistDto);
         }
 

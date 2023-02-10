@@ -8,7 +8,7 @@ import java.util.List;
 @Getter
 @Setter
 public class ArtistDto {
-    private Long id;
+    private long id;
     private String name;
     private String imageUrl;
     private CountryDto country;

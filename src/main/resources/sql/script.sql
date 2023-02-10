@@ -34,7 +34,7 @@ CREATE TABLE artist
 );
 
 INSERT INTO artist
-VALUES (NULL, 'Koke Benavides', 'https://f4.bcbits.com/img/0014021986_10.jpg', 1);
+VALUES (NULL, 'Koke Benavides', 'https://strandbergguitars.com/cdn-cgi/image/onerror=redirect,quality=85,format=auto,metadata=copyright,width=720,height=720,fit=cover/wp-content/uploads/2021/03/edit_5_3000-scaled.jpg', 1);
 
 CREATE TABLE artist_contact_info
 (

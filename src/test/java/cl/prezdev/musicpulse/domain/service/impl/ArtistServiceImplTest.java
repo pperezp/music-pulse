@@ -1,7 +1,7 @@
 package cl.prezdev.musicpulse.domain.service.impl;
 
 import cl.prezdev.musicpulse.adapters.secondary.persistence.mysql.adapter.ArtistMySqlAdapter;
-import cl.prezdev.musicpulse.domain.dto.ArtistDto;
+import cl.prezdev.musicpulse.domain.dto.ArtistLiteDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -27,9 +27,9 @@ class ArtistServiceImplTest {
 
     @BeforeEach
     void beforeEach(){
-        List<ArtistDto> artistDtoList = new ArrayList<>();
+        List<ArtistLiteDto> artistDtoList = new ArrayList<>();
 
-        ArtistDto artistDto = new ArtistDto();
+        ArtistLiteDto artistDto = new ArtistLiteDto();
 
         artistDto.setId(1L);
         artistDto.setName("name");
@@ -42,19 +42,16 @@ class ArtistServiceImplTest {
 
     @Test
     void test_searchArtistFormat(){
-        List<ArtistDto> artists = artistService.search("name");
+        List<ArtistLiteDto> artists = artistService.search("name");
 
         assertNotNull(artists);
         assertFalse(artists.isEmpty());
 
-        ArtistDto artistDto = artists.get(0);
+        ArtistLiteDto artistDto = artists.get(0);
 
         assertNotNull(artistDto.getId());
         assertNotNull(artistDto.getName());
         assertNotNull(artistDto.getImageUrl());
-        assertNull(artistDto.getCountry());
-        assertNull(artistDto.getContactsInfo());
-        assertNull(artistDto.getSocialsMedia());
     }
 
 }

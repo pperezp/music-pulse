@@ -1,6 +1,7 @@
 package cl.prezdev.musicpulse.domain.controller;
 
 import cl.prezdev.musicpulse.domain.dto.ArtistDto;
+import cl.prezdev.musicpulse.domain.dto.ArtistLiteDto;
 import cl.prezdev.musicpulse.domain.dto.response.ArtistSearchResponse;
 
 import cl.prezdev.musicpulse.domain.service.impl.ArtistServiceImpl;
@@ -31,9 +32,9 @@ class RestArtistControllerTest {
 
     @BeforeEach
     void beforeEach(){
-        List<ArtistDto> artists = new ArrayList<>();
+        List<ArtistLiteDto> artists = new ArrayList<>();
 
-        ArtistDto artistDto = new ArtistDto();
+        ArtistLiteDto artistDto = new ArtistLiteDto();
 
         artistDto.setId(1L);
         artistDto.setName("name");
@@ -53,18 +54,15 @@ class RestArtistControllerTest {
         ArtistSearchResponse body = response.getBody();
         assertNotNull(body);
 
-        List<ArtistDto> artists = body.getArtists();
+        List<ArtistLiteDto> artists = body.getArtists();
         assertNotNull(artists);
 
         assertFalse(artists.isEmpty());
 
-        ArtistDto artistDto = artists.get(0);
+        ArtistLiteDto artistDto = artists.get(0);
 
         assertNotNull(artistDto.getId());
         assertNotNull(artistDto.getName());
         assertNotNull(artistDto.getImageUrl());
-        assertNull(artistDto.getCountry());
-        assertNull(artistDto.getContactsInfo());
-        assertNull(artistDto.getSocialsMedia());
     }
 }
