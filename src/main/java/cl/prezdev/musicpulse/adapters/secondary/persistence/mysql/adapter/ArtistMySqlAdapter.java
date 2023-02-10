@@ -9,9 +9,7 @@ import cl.prezdev.musicpulse.domain.ports.secondary.ArtistPersistencePort;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -42,14 +40,14 @@ public class ArtistMySqlAdapter implements ArtistPersistencePort {
 
     @Override
     public PageDto<ArtistDto> getAllArtist(Pagination pagination) {
-        Sort sort = getSort(pagination);
-        Pageable pageable = PageRequest.of(pagination.getPage(), pagination.getSize(), sort);
+        Pageable pageable = pagination.toPageable();
 
         Page<Artist> artistPages = artistRepository.findAll(pageable);
         Page<ArtistDto> page = artistPages.map(artist -> modelMapper.map(artist, ArtistDto.class));
 
         PageDto<ArtistDto> pageDto = new PageDto<>();
         modelMapper.map(page, pageDto);
+
         return pageDto;
     }
 
@@ -69,15 +67,5 @@ public class ArtistMySqlAdapter implements ArtistPersistencePort {
         }
 
         return artistDtoList;
-    }
-
-    private Sort getSort(Pagination pagination) {
-        String orderBy = pagination.getOrderBy();
-
-        if (pagination.isAsc()) {
-            return Sort.by(orderBy).ascending();
-        }
-
-        return Sort.by(orderBy).descending();
     }
 }
