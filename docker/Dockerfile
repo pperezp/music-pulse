@@ -3,7 +3,7 @@ FROM openjdk:17-jdk-slim
 EXPOSE 8080
 WORKDIR /opt/app
 
-ARG JAR_FILE=../target/music-pulse-0.0.1-SNAPSHOT.jar
+ARG JAR_FILE=app.jar
 ARG PROP_FILE=application.properties
 
 ADD ${JAR_FILE} app.jar
